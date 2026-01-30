@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- HR Users can only see their own requests -->
+        <record id="fleet_vehicle_request_hr_rule" model="ir.rule">
+            <field name="name">Fleet Vehicle Request HR Rule</field>
+            <field name="model_id" ref="model_fleet_vehicle_request"/>
+            <field name="groups" eval="[(4, ref('create_data.group_dept_manager'))]"/>
+            <field name="domain_force">[('requested_by', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- HR Managers can only see their own requests -->
+        <record id="fleet_vehicle_request_hr_manager_rule" model="ir.rule">
+            <field name="name">Fleet Vehicle Request HR Manager Rule</field>
+            <field name="model_id" ref="model_fleet_vehicle_request"/>
+            <field name="groups" eval="[(4, ref('create_data.group_dept_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Fleet Managers can see all submitted requests -->
+        <record id="fleet_vehicle_request_fleet_rule" model="ir.rule">
+            <field name="name">Fleet Vehicle Request Fleet Rule</field>
+            <field name="model_id" ref="model_fleet_vehicle_request"/>
+            <field name="groups" eval="[(4, ref('create_data.group_general_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>

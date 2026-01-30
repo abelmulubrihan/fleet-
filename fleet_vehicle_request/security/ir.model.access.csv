@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fleet_vehicle_request_dept_user,fleet.vehicle.request hr user,model_fleet_vehicle_request,create_data.group_dept_manager,1,1,1,0
+fleet_vehicle_request_hr_manager,fleet.vehicle.request hr manager,model_fleet_vehicle_request,create_data.group_hr_manager,1,1,0,0
+fleet_vehicle_request_fleet_manager,fleet.vehicle.request fleet manager,model_fleet_vehicle_request,create_data.group_general_manager,1,1,0,0
